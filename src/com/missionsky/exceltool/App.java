@@ -11,6 +11,7 @@ import com.missionsky.exceltool.model.AttendanceModel;
 import com.missionsky.exceltool.util.AttendanceConstant;
 import com.missionsky.exceltool.util.EmailIncludeTxt;
 import com.missionsky.exceltool.util.ReadExcel;
+import com.sun.mail.smtp.SMTPAddressFailedException;
 
 public class App {
 	
@@ -60,7 +61,10 @@ public class App {
 		}catch(AuthenticationFailedException e){
 			//发送邮件失败
 			logger.error("邮件服务器验证失败，请检查配置信息", e);
-		}catch(Exception e){
+		}catch(SMTPAddressFailedException e){
+			logger.error("邮箱地址无法访问，请检查该地址是否有效", e);
+		}
+		catch(Exception e){
 			logger.error("发送邮件失败", e);
 		}
 		finally {
