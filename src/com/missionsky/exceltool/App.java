@@ -44,6 +44,9 @@ public class App {
 					EmailIncludeTxt.sendEmail(to, attendance.getNameEN().replace(" ", ".") + AttendanceConstant.ATTENDANCE_SUBJECT, attendance.toString());
 					logger.info(attendance.getNameEN().toLowerCase() + "发送成功" + i );
 					i++;
+					
+					//间隔2秒发送
+					Thread.sleep(2000);
 				}
 				logger.info("发送邮件完毕......");
 			}else{

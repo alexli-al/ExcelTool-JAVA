@@ -77,7 +77,8 @@ public class EmailIncludeTxt {
         String finalString = "";
 
         Properties props = System.getProperties();
-        props.put("mail.smtp.starttls.enable", "true");
+        //connection was closed by remote host
+        props.put("mail.smtp.starttls.enable", "false");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.user", address);
         props.put("mail.smtp.password", password);
